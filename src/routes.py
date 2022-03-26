@@ -11,7 +11,7 @@ router = APIRouter()
 
 
 @router.post("/companies/", response_model=schemas.Company)
-def create_user(company: schemas.CompanyBase, db: Session = Depends(get_db)):
+def create_user(company: schemas.Company, db: Session = Depends(get_db)):
     try:
         return companyController.create_company(company, db=db)
     except Exception as e:

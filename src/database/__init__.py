@@ -6,8 +6,8 @@ from sqlalchemy.orm import sessionmaker
 
 DB_USER = os.getenv("DB_USER", "jriom")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "55141055")
-POSTGRES_URL = os.getenv("POSTGRES_URL", "localhost:5432/")
-DATABASE_URI = f"postgres://{DB_USER}:{DB_PASSWORD}@{POSTGRES_URL}"
+POSTGRES_URL = os.getenv("POSTGRES_URL", "localhost:5432/fastapi_db")
+DATABASE_URI = f"postgresql://{DB_USER}:{DB_PASSWORD}@{POSTGRES_URL}"
 
 engine = create_engine(DATABASE_URI)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

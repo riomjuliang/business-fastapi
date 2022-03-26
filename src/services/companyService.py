@@ -13,12 +13,12 @@ class CompanyService:
             name=company.name,
             link=company.link,
             city=company.city,
-            dateAdded=company.dateAdded,
-            contactFirstName=company.contactFirstName,
-            contactLastName=company.contactLastName,
-            contactPhoneNumber=company.contactPhoneNumber,
-            contactEmail=company.contactEmail,
-            companyId=company.companyId,
+            dateAdded=company.date_added,
+            contactFirstName=company.contact_first_name,
+            contactLastName=company.contact_last_name,
+            contactPhoneNumber=company.contact_phone_number,
+            contactEmail=company.contact_email,
+            companyId=company.company_id,
             country=company.country
         )
 
