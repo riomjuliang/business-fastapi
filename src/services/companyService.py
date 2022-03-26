@@ -1,3 +1,4 @@
+from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from src.database import schemas, models
@@ -7,18 +8,18 @@ class CompanyService:
     def create_company(self, db: Session, company: schemas.Company):
         existing_company = self.get_company_by_name(db, name=company.name)
         if existing_company:
-            raise Exception("Company already exists")
+            raise HTTPException(status_code=400, detail="Company already exists")
 
         to_create_company = models.Company(
             name=company.name,
             link=company.link,
             city=company.city,
-            dateAdded=company.date_added,
-            contactFirstName=company.contact_first_name,
-            contactLastName=company.contact_last_name,
-            contactPhoneNumber=company.contact_phone_number,
-            contactEmail=company.contact_email,
-            companyId=company.company_id,
+            date_added=company.date_added,
+            contact_first_name=company.contact_first_name,
+            contact_last_name=company.contact_last_name,
+            contact_phone_number=company.contact_phone_number,
+            contact_email=company.contact_email,
+            company_id=company.company_id,
             country=company.country
         )
 
@@ -30,8 +31,9 @@ class CompanyService:
     def get_companies(self, db: Session):
         return db.query(models.Company).all()
 
-    def get_company_by_name(self, db: Session, name: str):
-        return db.query(models.Company).filter(models.Company.name == name).first()
-
     def get_company_by_id(self, db: Session, company_id: int):
-        return db.query(models.Company).filter(models.Company.companyId == company_id).first()
+        company = db.query(models.Company).filter(models.Company.company_id == company_id).first()
+        if company is None:
+            raise HTTPException(status_code=404, detail="Company with company id " + str(company_id) + " not exists")
+        else:
+            return company
