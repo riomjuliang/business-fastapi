@@ -12,7 +12,7 @@ db = SessionLocal()
 class VacancyService:
 
     def create_vacancy(self, vacancy: VacancyDto):
-        existing_company = companyRepository.get_company_by_id(int(vacancy.company_id))
+        existing_company = companyRepository.get_company_by_id(vacancy.company_id)
         if not existing_company:
             raise HTTPException(status_code=404, detail="Company with id " + str(vacancy.company_id) + " not exists")
 
@@ -74,3 +74,11 @@ class VacancyService:
             db.commit()
 
             return vacancy_to_delete
+
+    def get_vacancies_by_company_id(self, company_id):
+        vacancies = vacancyRepository.get_all_by_company_id(company_id)
+
+        if not vacancies:
+            raise HTTPException(status_code=404, detail="Vacancies with company id " + str(company_id) + " not found")
+        else:
+            return vacancies

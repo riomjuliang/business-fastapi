@@ -10,3 +10,7 @@ def get_all():
 
 def get_vacancy_by_id(vacancy_id: int):
     return db.query(Vacancy).filter(Vacancy.vacancy_id == vacancy_id).first()
+
+
+def get_all_by_company_id(company_id: int):
+    return db.query(Vacancy).filter(Vacancy.company_id == company_id).all()

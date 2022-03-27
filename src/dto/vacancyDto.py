@@ -1,11 +1,12 @@
+
 from pydantic import BaseModel
 
 
 class VacancyDto(BaseModel):  # serializer
-    id = int
-    position_name = str
-    company_id = int
-    salary = float
+    id: int
+    position_name: str
+    company_id: int
+    salary: float
     max_experience: int
     vacancy_id: int
     vacancy_link: str
