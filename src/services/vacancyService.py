@@ -70,10 +70,7 @@ class VacancyService:
         if vacancy_to_delete is None:
             raise HTTPException(status_code=404, detail="Vacancy with vacancy id " + str(vacancy_id) + " not found")
         else:
-            db.delete(vacancy_to_delete)
-            db.commit()
-
-            return vacancy_to_delete
+            return vacancyRepository.delete(vacancy_to_delete)
 
     def get_vacancies_by_company_id(self, company_id):
         vacancies = vacancyRepository.get_all_by_company_id(company_id)

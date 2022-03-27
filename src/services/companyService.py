@@ -68,7 +68,4 @@ class CompanyService:
         if company_to_delete is None:
             raise HTTPException(status_code=404, detail="Company with company id " + str(company_id) + " not found")
         else:
-            db.delete(company_to_delete)
-            db.commit()
-
-            return company_to_delete
+            return companyRepository.delete(company_to_delete)

@@ -8,6 +8,7 @@ from src.dto.vacancyDto import VacancyDto
 
 router = APIRouter()
 
+# Companies
 
 @router.post("/companies", response_model=CompanyDto, status_code=status.HTTP_201_CREATED)
 def create_company(company: CompanyDto):

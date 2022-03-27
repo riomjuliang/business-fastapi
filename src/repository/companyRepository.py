@@ -10,3 +10,10 @@ def get_all():
 
 def get_company_by_id(company_id: int):
     return db.query(Company).filter(Company.company_id == company_id).first()
+
+
+def delete(company: Company):
+    db.delete(company)
+    db.commit()
+
+    return company
