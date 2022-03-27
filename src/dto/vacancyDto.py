@@ -3,7 +3,6 @@ from pydantic import BaseModel
 
 
 class VacancyDto(BaseModel):  # serializer
-    id: int
     position_name: str
     company_id: int
     salary: float

@@ -5,7 +5,7 @@ from src.database import Base
 
 class Vacancy(Base):
     __tablename__ = 'vacancy'
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     position_name = Column(String(255), nullable=False)
     company_id = Column(Integer)
     salary = Column(Float)

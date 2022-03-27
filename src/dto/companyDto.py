@@ -4,7 +4,6 @@ from pydantic import BaseModel
 
 
 class CompanyDto(BaseModel):  # serializer
-    id: int
     name: str
     link: str
     city: str
