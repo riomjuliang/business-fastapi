@@ -1,6 +1,6 @@
 from sqlalchemy import Integer, Column, String, Date
 
-from src.database.dataSourceConfiguration import Base
+from src.database import Base
 
 
 class Company(Base):

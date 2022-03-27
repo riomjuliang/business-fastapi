@@ -1,4 +1,4 @@
-from src.database.dataSourceConfiguration import SessionLocal
+from src.database import SessionLocal
 from src.database.models.company import Company
 
 db = SessionLocal()

@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 
-from src.database.dataSourceConfiguration import SessionLocal
+from src.database import SessionLocal
 from src.database.models.company import Company
 from src.dto.companyDto import CompanyDto
 from src.repository import companyRepository
