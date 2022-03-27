@@ -3,7 +3,7 @@ from datetime import date
 from pydantic import BaseModel
 
 
-class Company(BaseModel):  #serializer
+class CompanyDto(BaseModel):  # serializer
     id: int
     name: str
     link: str

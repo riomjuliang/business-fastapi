@@ -2,7 +2,7 @@ from fastapi import HTTPException
 
 from src.database.dataSourceConfiguration import SessionLocal
 from src.database.models.vacancy import Vacancy
-from src.dto.vacancyDto import Vacancy
+from src.dto.vacancyDto import VacancyDto
 from src.repository import companyRepository
 from src.repository import vacancyRepository
 
@@ -11,8 +11,8 @@ db = SessionLocal()
 
 class VacancyService:
 
-    def create_vacancy(self, vacancy: Vacancy):
-        existing_company = companyRepository.get_company_by_id(vacancy.company_id)
+    def create_vacancy(self, vacancy: VacancyDto):
+        existing_company = companyRepository.get_company_by_id(int(vacancy.company_id))
         if not existing_company:
             raise HTTPException(status_code=404, detail="Company with id " + str(vacancy.company_id) + " not exists")
 
@@ -48,7 +48,7 @@ class VacancyService:
         else:
             return vacancy
 
-    def update_vacancy(self, vacancy_id: int, vacancy: Vacancy):
+    def update_vacancy(self, vacancy_id: int, vacancy: VacancyDto):
         vacancy_to_update = vacancyRepository.get_vacancy_by_id(vacancy_id)
         if vacancy_to_update is None:
             raise HTTPException(status_code=404, detail="Vacancy with vacancy id " + str(vacancy_id) + " not found")

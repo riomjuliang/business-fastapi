@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Vacancy(BaseModel):  # serializer
+class VacancyDto(BaseModel):  # serializer
     id = int
     position_name = str
     company_id = int
