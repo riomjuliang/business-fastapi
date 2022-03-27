@@ -1,6 +1,6 @@
-from sqlalchemy import Integer, Column, String, Date, Float
+from sqlalchemy import Integer, Column, String, Date
 
-from src.database.database import Base
+from src.database.dataSourceConfiguration import Base
 
 
 class Company(Base):
@@ -16,16 +16,3 @@ class Company(Base):
     contact_email = Column(String(255))
     company_id = Column(Integer, nullable=False)
     country = Column(String(255))
-
-
-class Vacancy(Base):
-    __tablename__ = 'vacancy'
-    id = Column(Integer, primary_key=True)
-    position_name = Column(String(255), nullable=False)
-    company_id = Column(Integer)
-    salary = Column(Float)
-    max_experience = Column(Integer)
-    vacancy_id = Column(Integer)
-    vacancy_link = Column(String(255))
-    min_experience = Column(Integer)
-    skills = Column(String(255))

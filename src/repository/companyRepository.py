@@ -1,12 +1,12 @@
-from src.database import models
-from src.database.database import SessionLocal
+from src.database.dataSourceConfiguration import SessionLocal
+from src.database.models.company import Company
 
 db = SessionLocal()
 
 
 def get_all():
-    return db.query(models.Company).all()
+    return db.query(Company).all()
 
 
 def get_company_by_id(company_id: int):
-    return db.query(models.Company).filter(models.Company.company_id == company_id).first()
+    return db.query(Company).filter(Company.company_id == company_id).first()
