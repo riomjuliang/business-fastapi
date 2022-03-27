@@ -5,7 +5,7 @@ from src.database import Base
 
 class Company(Base):
     __tablename__ = 'company'
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, autoincrement=True)
     name = Column(String(255), nullable=False, unique=True)
     link = Column(String(255))
     city = Column(String(255))
@@ -14,5 +14,5 @@ class Company(Base):
     contact_last_name = Column(String(255))
     contact_phone_number = Column(String(255))
     contact_email = Column(String(255))
-    company_id = Column(Integer, nullable=False)
+    company_id = Column(Integer, primary_key=True, nullable=False)
     country = Column(String(255))
