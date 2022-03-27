@@ -1,21 +1,25 @@
 from src.services import companyService
 
-
-def create_company(company, db):
+def create_company(company):
     cs = companyService.CompanyService()
-    return cs.create_company(db=db, company=company)
+    return cs.create_company(company=company)
 
 
-def get_companies(db):
+def get_companies():
     cs = companyService.CompanyService()
-    return cs.get_companies(db=db)
+    return cs.get_companies()
 
 
-def get_company_by_name(name, db):
+def get_company_by_id(company_id):
     cs = companyService.CompanyService()
-    return cs.get_company_by_name(db=db, name=name)
+    return cs.get_company_by_id(company_id=company_id)
 
 
-def get_company_by_id(company_id, db):
+def update_company(company_id, company):
     cs = companyService.CompanyService()
-    return cs.get_company_by_id(db=db, company_id=company_id)
+    return cs.update_company(company_id=company_id, company=company)
+
+
+def delete_company(company_id):
+    cs = companyService.CompanyService()
+    return cs.delete_company(company_id=company_id)
