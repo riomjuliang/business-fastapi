@@ -7,7 +7,8 @@ from sqlalchemy.orm import sessionmaker
 DB_USER = os.getenv("DB_USER", "vrgwlbtcblpeti")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "bacb7426ef9987b308a22e685cc9f963fbc4c5f223ea95eede289c2708a89755")
 POSTGRES_URL = os.getenv("POSTGRES_URL", "ec2-52-3-60-53.compute-1.amazonaws.com:5432/d6p1npmqrb6veh")
-DATABASE_URI = f"postgres://{DB_USER}:{DB_PASSWORD}@{POSTGRES_URL}"
+DATABASE_URI = "postgres://vrgwlbtcblpeti:bacb7426ef9987b308a22e685cc9f963fbc4c5f223ea95eede289c2708a89755@ec2-52-3" \
+               "-60-53.compute-1.amazonaws.com:5432/d6p1npmqrb6veh "
 
 engine = create_engine(DATABASE_URI)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
