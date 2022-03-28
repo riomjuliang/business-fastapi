@@ -46,7 +46,7 @@ Permite crear una empresa
 
 **Obtención de empresas**
 
-Obtiene la información de todas las empresas
+Obtiene la información de todas las empresas existentes
 
 `Type: GET -> /companies`
 
@@ -243,7 +243,7 @@ Obtiene la información de todas las vacantes existentes según ID recibido por 
       },
       {
           "position_name": "Position name",
-          "company_id": 2,
+          "company_id": 1,
           "salary": 3500,
           "max_experience": 3,
           "vacancy_id": 2,
