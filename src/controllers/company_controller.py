@@ -1,6 +1,6 @@
 from src.services import company_service
 
-cs = company_service.CompanyService
+cs = company_service.CompanyService()
 
 
 def create_company(company):

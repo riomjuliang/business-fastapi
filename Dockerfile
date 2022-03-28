@@ -1,14 +1,6 @@
-FROM tiangolo/uvicorn-gunicorn:python3.9
-ARG POSTGRES_URL
-ENV POSTGRES_URL "${POSTGRES_URL:-localhost:5432/}"
-
-ADD ../requirements.txt /tmp/
-
-RUN pip install -r /tmp/requirements.txt
-
-RUN mkdir -p /app/
-
-WORKDIR /app/
-
-ADD ../src ./src/
-ADD ../main.py ./main.py
+FROM python:3.9
+WORKDIR /usr/src/personalised_nudges
+COPY ./src ./src
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+#CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80"]
