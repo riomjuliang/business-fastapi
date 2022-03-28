@@ -13,7 +13,11 @@ class CompanyService:
     def create_company(self, company: CompanyDto):
         existing_company = company_repository.get_company_by_id(company.company_id)
         if existing_company:
-            raise HTTPException(status_code=400, detail="Company already exists")
+            raise HTTPException(status_code=400, detail="Company already exists with id " + str(company.company_id))
+
+        existing_company_by_name = company_repository.get_company_by_name(company.name)
+        if existing_company_by_name:
+            raise HTTPException(status_code=400, detail="Company already exists with name " + company.name)
 
         to_create_company = Company(
             name=company.name,
