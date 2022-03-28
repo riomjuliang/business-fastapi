@@ -2,9 +2,9 @@ from typing import List
 
 from fastapi import APIRouter, status
 
-from src.controllers import companyController, vacancyController
-from src.dto.companyDto import CompanyDto
-from src.dto.vacancyDto import VacancyDto
+from src.controllers import company_controller, vacancy_controller
+from src.dto.company_dto import CompanyDto
+from src.dto.vacancy_dto import VacancyDto
 
 router = APIRouter()
 

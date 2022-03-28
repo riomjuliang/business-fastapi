@@ -1,6 +1,6 @@
-from src.services import vacancyService
+from src.services import vacancy_service
 
-cs = vacancyService.VacancyService()
+cs = vacancy_service.VacancyService()
 
 
 def create_vacancy(vacancy):

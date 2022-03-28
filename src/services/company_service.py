@@ -2,8 +2,8 @@ from fastapi import HTTPException
 
 from src.database import SessionLocal
 from src.database.models.company import Company
-from src.dto.companyDto import CompanyDto
-from src.repository import companyRepository
+from src.dto.company_dto import CompanyDto
+from src.repository import company_repository
 
 db = SessionLocal()
 
@@ -11,7 +11,7 @@ db = SessionLocal()
 class CompanyService:
 
     def create_company(self, company: CompanyDto):
-        existing_company = companyRepository.get_company_by_id(company.company_id)
+        existing_company = company_repository.get_company_by_id(company.company_id)
         if existing_company:
             raise HTTPException(status_code=400, detail="Company already exists")
 
@@ -35,17 +35,17 @@ class CompanyService:
         return to_create_company
 
     def get_companies(self):
-        return companyRepository.get_all()
+        return company_repository.get_all()
 
     def get_company_by_id(self, company_id: int):
-        company = companyRepository.get_company_by_id(company_id)
+        company = company_repository.get_company_by_id(company_id)
         if company is None:
             raise HTTPException(status_code=404, detail="Company with company id " + str(company_id) + " not found")
         else:
             return company
 
     def update_company(self, company_id: int, company: CompanyDto):
-        company_to_update = companyRepository.get_company_by_id(company_id)
+        company_to_update = company_repository.get_company_by_id(company_id)
         if company_to_update is None:
             raise HTTPException(status_code=404, detail="Company with company id " + str(company_id) + " not found")
         else:
@@ -64,8 +64,8 @@ class CompanyService:
             return company_to_update
 
     def delete_company(self, company_id: int):
-        company_to_delete = companyRepository.get_company_by_id(company_id)
+        company_to_delete = company_repository.get_company_by_id(company_id)
         if company_to_delete is None:
             raise HTTPException(status_code=404, detail="Company with company id " + str(company_id) + " not found")
         else:
-            return companyRepository.delete(company_to_delete)
+            return company_repository.delete(company_to_delete)
