@@ -48,3 +48,5 @@ unicorn==1.0.3
 urllib3==1.26.7
 uvicorn==0.17.6
 websocket-client==1.2.1
+
+tenacity~=8.0.1
